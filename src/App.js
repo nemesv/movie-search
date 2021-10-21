@@ -7,6 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import { SearchPage } from "./SearchPage";
+import { DetailsPage } from "./DetailsPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               );
             }}
           </Route>
+          <Route path="/search/:title/:id" component={DetailsPage} />
           <Route path="/search/:title" component={SearchPage} />
           <Route path="/search">
             <Redirect to="/" />

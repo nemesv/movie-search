@@ -8,6 +8,9 @@ export const MOVIES_QUERY = gql`
       genres {
         name
       }
+      socialMedia {
+          imdb
+      }
       releaseDate
       score
       recommended {
