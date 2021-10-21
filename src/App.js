@@ -1,29 +1,38 @@
 import "./App.css";
-import { useLazyQuery } from "@apollo/client";
-import { useState } from "react";
-import CircularProgress from "@mui/material/CircularProgress";
 import { SearchForm } from "./SearchForm";
-import { MovieSearchResult } from "./MovieSearchResult";
-import { MOVIES_QUERY } from "./moviesQuery";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+  Route,
+} from "react-router-dom";
+import { SearchPage } from "./SearchPage";
 
 function App() {
-  const [details, setDetails] = useState();
-
-  const [getMovies, { loading, error, data }] = useLazyQuery(MOVIES_QUERY);
-
-  function executeSearch(value) {
-    setDetails(null);
-    if (value) getMovies({ variables: { name: value } });
-  }
-
-  const showSpinner = loading;
-
   return (
-    <div className="App">
-      <SearchForm label="Movie:" onSearch={executeSearch} />
-      {showSpinner && <CircularProgress />}
-      {data && <MovieSearchResult rows={data.searchMovies} />}
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            {({ history }) => {
+              return (
+                <div>
+                  <h1>Welcome to Movie Search!</h1>
+                  <SearchForm
+                    label="Movie:"
+                    onSearch={(value) => history.push(`/search/${value}`)}
+                  />
+                </div>
+              );
+            }}
+          </Route>
+          <Route path="/search/:title" component={SearchPage} />
+          <Route path="/search">
+            <Redirect to="/" />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

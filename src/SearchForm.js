@@ -2,8 +2,8 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 
 
-export function SearchForm({ onSearch, label }) {
-  const [value, setValue] = useState("");
+export function SearchForm({ onSearch, label, defaultValue = "" }) {
+  const [value, setValue] = useState(defaultValue);
   return (
     <div>
       <label htmlFor="search">{label}</label>
