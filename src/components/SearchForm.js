@@ -15,7 +15,7 @@ export function SearchForm({ onSearch, label, defaultValue = "" }) {
           variant="outlined"
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key == "Enter") onSearch(value);
+            if (e.key === "Enter") onSearch(value);
           }}
           value={value}
         />

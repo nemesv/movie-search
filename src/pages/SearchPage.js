@@ -11,7 +11,7 @@ import {
 export function SearchPage() {
   const { title } = useParams();
   const history = useHistory();
-  const { loading, error, data } = useQuery(SEARCH_MOVIES_QUERY, {
+  const { loading, data } = useQuery(SEARCH_MOVIES_QUERY, {
     variables: { name: title },
   });
 
