@@ -18,7 +18,7 @@ export function SearchPage() {
   return (
     <>
       <SearchForm
-        label="Movie:"
+        label="Movie title"
         defaultValue={title}
         onSearch={(value) => history.push(`/search/${value}`)} />
       {loading && <CircularProgress />}
