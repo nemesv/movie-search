@@ -1,7 +1,7 @@
-import { useMovieDetails } from "./useMovieDetails";
+import { useMovieDetails } from "../api/useMovieDetails";
 import { useQuery } from "@apollo/client";
 import CircularProgress from "@mui/material/CircularProgress";
-import { MOVIES_QUERY } from "./moviesQuery";
+import { MOVIES_QUERY } from "../api/moviesQuery";
 import { useParams, Link } from "react-router-dom";
 
 export function DetailsPage() {

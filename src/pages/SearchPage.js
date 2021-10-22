@@ -1,8 +1,8 @@
 import { useQuery } from "@apollo/client";
 import CircularProgress from "@mui/material/CircularProgress";
-import { SearchForm } from "./SearchForm";
-import { MovieSearchResult } from "./MovieSearchResult";
-import { MOVIES_QUERY } from "./moviesQuery";
+import { SearchForm } from "../components/SearchForm";
+import { MovieSearchResult } from "../components/MovieSearchResult";
+import { MOVIES_QUERY } from "../api/moviesQuery";
 import {
   useHistory,
   useParams

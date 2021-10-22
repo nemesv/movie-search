@@ -1,13 +1,13 @@
 import "./App.css";
-import { SearchForm } from "./SearchForm";
+import { SearchForm } from "./components/SearchForm";
 import {
   BrowserRouter as Router,
   Switch,
   Redirect,
   Route,
 } from "react-router-dom";
-import { SearchPage } from "./SearchPage";
-import { DetailsPage } from "./DetailsPage";
+import { SearchPage } from "./pages/SearchPage";
+import { DetailsPage } from "./pages/DetailsPage";
 
 function App() {
   return (
