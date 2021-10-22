@@ -15,11 +15,11 @@ export function DetailsPage() {
   const { loading: moviesLoading, data } = useQuery(SEARCH_MOVIES_QUERY, {
     variables: { name: title },
   });
-  let movie = data && data.searchMovies.filter((m) => m.id === id)[0];
+  const movie = data && data.searchMovies.filter((m) => m.id === id)[0];
 
-  let { name, releaseDate } = movie || {};
+  const { name, releaseDate } = movie || {};
 
-  let {
+  const {
     details,
     loading: detailsLoading,
     url: wikipediaUrl,
