@@ -5,6 +5,7 @@ export function useMovieDetails(name, year) {
   const [details, setDetails] = useState();
   const [loading, setLoading] = useState(false);
   const [url, setUrl] = useState();
+  const [imdbUrl, setImdbUrl] = useState();
   const baseUrl = `https://en.wikipedia.org/w/api.php`;
 
   useEffect(() => {
@@ -31,14 +32,18 @@ export function useMovieDetails(name, year) {
             format: "json",
             origin: "*",
             inprop: "url",
-            prop: "info|extracts",
+            prop: "info|extracts|extlinks",
             pageids: firstResult.pageid,
             exintro: 1,
             exsentences: 5,
             explaintext: 1,
+            ellimit: 500,
           },
         });
         const pageData = queryResponse.data.query.pages[firstResult.pageid];
+        const imdbLink = pageData.extlinks.filter(link => link['*'].includes("www.imdb.com/title/"))[0];
+        if (imdbLink)
+          setImdbUrl(imdbLink['*']);
         setDetails(pageData.extract);
         setUrl(pageData.fullurl);
       } finally {
@@ -48,5 +53,5 @@ export function useMovieDetails(name, year) {
     if (name && year) getDataFromWikiepia();
   }, [name, year, baseUrl]);
 
-  return { loading, details, url };
+  return { loading, details, url, imdbUrl };
 }

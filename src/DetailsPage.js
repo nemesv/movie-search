@@ -15,7 +15,7 @@ export function DetailsPage() {
 
   let { name, releaseDate } = movie || {};
 
-  let { details, loading: detailsLoading, url: wikipediaUrl } = useMovieDetails(
+  let { details, loading: detailsLoading, url: wikipediaUrl, imdbUrl } = useMovieDetails(
     name,
     releaseDate && new Date(releaseDate).getFullYear()
   );
@@ -31,7 +31,7 @@ export function DetailsPage() {
       <div>
         {details}
       </div>
-      {movie && <a href={movie.socialMedia.imdb || "#"} target="_blank">Open Imdb</a>}
+      {movie && <a href={movie.socialMedia.imdb || imdbUrl} target="_blank">Open Imdb</a>}
       {wikipediaUrl && <a href={wikipediaUrl} target="_blank">Open Wikipedia</a>}
       <Link to={`/search/${title}`}>Back to result</Link>
     </div>
