@@ -1,14 +1,14 @@
 import { useMovieDetails } from "../api/useMovieDetails";
 import { useQuery } from "@apollo/client";
 import CircularProgress from "@mui/material/CircularProgress";
-import { MOVIES_QUERY } from "../api/moviesQuery";
+import { SEARCH_MOVIES_QUERY } from "../api/searchMoviesQuery";
 import { useParams, Link } from "react-router-dom";
 
 export function DetailsPage() {
   const { title, id } = useParams();
   const {
     loading: moviesLoading, error, data,
-  } = useQuery(MOVIES_QUERY, {
+  } = useQuery(SEARCH_MOVIES_QUERY, {
     variables: { name: title },
   });
   let movie = (data && data.searchMovies.filter((m) => m.id == id)[0]);

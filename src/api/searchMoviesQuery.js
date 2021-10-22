@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-export const MOVIES_QUERY = gql`
+export const SEARCH_MOVIES_QUERY = gql`
   query SearchMovies($name: String!) {
     searchMovies(query: $name) {
       id

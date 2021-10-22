@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import CircularProgress from "@mui/material/CircularProgress";
 import { SearchForm } from "../components/SearchForm";
 import { MovieSearchResult } from "../components/MovieSearchResult";
-import { MOVIES_QUERY } from "../api/moviesQuery";
+import { SEARCH_MOVIES_QUERY } from "../api/searchMoviesQuery";
 import {
   useHistory,
   useParams
@@ -11,7 +11,7 @@ import {
 export function SearchPage() {
   const { title } = useParams();
   const history = useHistory();
-  const { loading, error, data } = useQuery(MOVIES_QUERY, {
+  const { loading, error, data } = useQuery(SEARCH_MOVIES_QUERY, {
     variables: { name: title },
   });
 
