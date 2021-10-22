@@ -26,7 +26,7 @@ export function MovieSearchResult({ rows, limit = 10 }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.slice(limit).map((row) => (
+            {rows.slice(0, limit).map((row) => (
               <TableRow key={row.id}>
                 <TableCell>
                   <Link to={`${url}/${row.id}`}>{row.name}</Link>
