@@ -2,7 +2,7 @@ import { useMovieDetails } from "../api/useMovieDetails";
 import { useQuery } from "@apollo/client";
 import CircularProgress from "@mui/material/CircularProgress";
 import { SEARCH_MOVIES_QUERY } from "../api/searchMoviesQuery";
-import { useParams } from "react-router-dom";
+import { useParams, Link as RouterLink } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
@@ -65,7 +65,9 @@ export function DetailsPage() {
               </Box>
             </>
           )}
-          <Link href={`/search/${title}`}>Back to result</Link>
+          <Link component={RouterLink} to={`/search/${title}`}>
+            Back to result
+          </Link>
         </Stack>
       </Box>
     </Container>
