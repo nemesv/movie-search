@@ -1,32 +1,15 @@
 import "./App.css";
-import { SearchForm } from "./components/SearchForm";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Redirect,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { SearchPage } from "./pages/SearchPage";
 import { DetailsPage } from "./pages/DetailsPage";
+import { HomePage } from "./pages/HomePage";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path="/">
-            {({ history }) => {
-              return (
-                <div>
-                  <h1>Welcome to Movie Search!</h1>
-                  <SearchForm
-                    label="Movie:"
-                    onSearch={(value) => history.push(`/search/${value}`)}
-                  />
-                </div>
-              );
-            }}
-          </Route>
+          <Route exact path="/" component={HomePage} />
           <Route path="/search/:title/:id" component={DetailsPage} />
           <Route path="/search/:title" component={SearchPage} />
           <Route path="/search">
